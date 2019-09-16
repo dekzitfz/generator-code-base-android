@@ -1,0 +1,16 @@
+{
+  "name": "generator-android-kotlin-mvvm",
+  "version": "1.0.0",
+  "description": "",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "author": "Adi Andrea",
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "^1.1.1"
+  }
+}
