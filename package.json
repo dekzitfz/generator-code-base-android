@@ -11,6 +11,7 @@
   "author": "Adi Andrea",
   "license": "ISC",
   "dependencies": {
+    "mkdirp": "^0.5.1",
     "yeoman-generator": "^1.1.1"
   }
 }
