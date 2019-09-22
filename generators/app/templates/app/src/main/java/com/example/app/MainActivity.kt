@@ -1,4 +1,4 @@
-package <%= package %>
+package <%= package %> //<%= package %>
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
