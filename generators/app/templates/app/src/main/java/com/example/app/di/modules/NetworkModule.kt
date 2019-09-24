@@ -1,5 +1,6 @@
 package <%= package %>.di.modules
 
+import <%= package %>.BuildConfig
 import <%= package %>.network.APIService
 import dagger.Module
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,7 +45,7 @@ class NetworkModule{
     @Singleton
     fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://www.google.com/")
+            .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))

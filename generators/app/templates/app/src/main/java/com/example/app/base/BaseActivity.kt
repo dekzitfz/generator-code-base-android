@@ -7,10 +7,9 @@ import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
-abstract class BaseActivity<T : BaseViewModel>  : AppCompatActivity(){
+abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(){
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var factory: ViewModelProvider.Factory
     protected lateinit var viewModel: T
 
     override fun onCreate(savedInstanceState: Bundle?) {

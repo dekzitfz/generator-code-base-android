@@ -12,6 +12,6 @@ class AppModule {
 
     @Provides
     @ApplicationContext
-    internal fun provideContext(application: App): Context = application.applicationContext
+    fun provideContext(application: App): Context = application.applicationContext
 
 }

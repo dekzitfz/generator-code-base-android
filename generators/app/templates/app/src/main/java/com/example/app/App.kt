@@ -9,6 +9,7 @@ import dagger.android.HasActivityInjector
 import <%= package %>.di.component.AppComponent
 import <%= package %>.di.modules.NetworkModule
 import <%= package %>.di.component.DaggerAppComponent
+import timber.log.Timber
 
 class App : Application(), HasActivityInjector {
 
@@ -18,6 +19,11 @@ class App : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+
+        if(BuildConfig.DEBUG){
+            Timber.plant(Timber.DebugTree())
+        }
+
         appComponent = DaggerAppComponent
             .builder()
             .application(this)

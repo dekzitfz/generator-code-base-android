@@ -11,11 +11,9 @@ import dagger.android.support.AndroidSupportInjection
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-
 abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var factory: ViewModelProvider.Factory
     protected abstract var viewModel: T
 
     protected abstract val layout: Int

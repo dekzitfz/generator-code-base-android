@@ -8,11 +8,9 @@ import dagger.android.support.AndroidSupportInjection
 import androidx.lifecycle.ViewModelProvider
 import javax.inject.Inject
 
-
 abstract class BaseFragmentViewModel<T : BaseViewModel> : Fragment() {
 
-    @Inject
-    lateinit var factory: ViewModelProvider.Factory
+    @Inject lateinit var factory: ViewModelProvider.Factory
 
     protected abstract var viewModel: T
     protected abstract val viewModelClass: Class<T>
@@ -26,6 +24,5 @@ abstract class BaseFragmentViewModel<T : BaseViewModel> : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this, factory).get(viewModelClass)
     }
-
 
 }
