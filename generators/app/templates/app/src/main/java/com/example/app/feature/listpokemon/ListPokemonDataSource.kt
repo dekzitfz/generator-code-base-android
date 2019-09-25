@@ -16,13 +16,13 @@ class ListPokemonDataSource (private var dataManager: DataManager): PageKeyedDat
     @SuppressLint("CheckResult")
     override fun loadInitial(params: LoadInitialParams<Int>, callback: LoadInitialCallback<Int, Pokemon>) {
         networkState.postValue(NetworkState.LOADING)
-        dataManager.reqPokemon(params.requestedLoadSize, 0)
+        dataManager.reqPokemon(0, params.requestedLoadSize)
             .subscribe(
                 {res ->
                     if(res.isSuccessful){
                         val response = res.body()
                         response?.results?.let {
-                            callback.onResult(it, null, 1)
+                            callback.onResult(it, null, params.requestedLoadSize)
                             networkState.postValue(NetworkState.LOADED)
                         }
                     }else{
@@ -40,13 +40,13 @@ class ListPokemonDataSource (private var dataManager: DataManager): PageKeyedDat
 
     @SuppressLint("CheckResult")
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Pokemon>) {
-        dataManager.reqPokemon(params.requestedLoadSize, 0)
+        dataManager.reqPokemon(params.key, params.requestedLoadSize)
             .subscribe(
                 {res ->
                     if(res.isSuccessful){
                         val response = res.body()
                         response?.results?.let {
-                            callback.onResult(it, params.key+1)
+                            callback.onResult(it, params.key+params.requestedLoadSize)
                         }
                     }else{
                         val responseCode = res.code()
