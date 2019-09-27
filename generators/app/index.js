@@ -64,10 +64,17 @@ module.exports = class extends Generator {
         mkdirp(rootDir + '/app/src/main');
         mkdirp(rootDir + '/app/src/main/java/' + packageDir); //NOTE put kotlin file(s) inside this directory
 
+        //AndroidManifest
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/AndroidManifest.xml'),
+          this.destinationPath(rootDir + '/app/src/main/AndroidManifest.xml'),
+          {package: this.answers.package}
+        );
+
         // generate kt file(s)
         this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/MainActivity.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/MainActivity.kt'),
+          this.templatePath('app/src/main/java/com/example/app/App.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/App.kt'),
           {package: this.answers.package}
         );
         
