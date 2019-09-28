@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='BaseAndroidKotlinMvvm'
+rootProject.name='<%= app_name %>'

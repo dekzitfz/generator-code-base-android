@@ -54,7 +54,41 @@ module.exports = class extends Generator {
 
         //generate directory project
         var rootDir = this.answers.name.replace(/\s/g, '');
+
+        //generate root folder
         mkdirp(rootDir);
+
+        /*----------start generate files in root directory ----------*/
+        //build.gradle (project)
+        this.fs.copy(
+          this.templatePath('build.gradle'),
+          this.destinationPath(rootDir + '/build.gradle')
+        );
+
+        //gradle.properties
+        this.fs.copy(
+          this.templatePath('gradle.properties'),
+          this.destinationPath(rootDir + '/gradle.properties')
+        );
+
+        //gradlew
+        this.fs.copy(
+          this.templatePath('gradlew'),
+          this.destinationPath(rootDir + '/gradlew')
+        );
+
+        //gradlew.bat
+        this.fs.copy(
+          this.templatePath('gradlew.bat'),
+          this.destinationPath(rootDir + '/gradlew.bat')
+        );
+
+        //settings.gradle
+        this.fs.copyTpl(
+          this.templatePath('settings.gradle'),
+          this.destinationPath(rootDir + '/settings.gradle'),
+          {app_name: this.answers.name.replace(/\s/g, '')}
+        );
 
         //generate app folder and its subfolder(s)
         mkdirp(rootDir + '/app'); //root/app
