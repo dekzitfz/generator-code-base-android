@@ -95,6 +95,12 @@ module.exports = class extends Generator {
 
 
         /*----------start generate files in root/app/ ----------*/
+        //app/libs
+        mkdirp(rootDir + '/app/libs');
+
+        //app/src
+        mkdirp(rootDir + '/app/src');
+
         //app/build.gradle
         this.fs.copyTpl(
           this.templatePath('app/build.gradle'),
@@ -128,12 +134,20 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src ----------*/
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME
+        mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir);
       
-        //generate app folder and its subfolder(s)
-        mkdirp(rootDir + '/app/libs'); //root/app/libs
-        mkdirp(rootDir + '/app/src'); //root/app/src
-        mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir); //root/app/src/androidTest/java/YOUR_PACKAGE_NAME
+        //app/src/test/java/YOUR_PACKAGE_NAME
+        mkdirp(rootDir + '/app/src/test/java/' + packageDir);
+
+        //app/src/main/
         mkdirp(rootDir + '/app/src/main');
+
+
+
+
+        //generate app folder and its subfolder(s)
         mkdirp(rootDir + '/app/src/main/java/' + packageDir); //NOTE put kotlin file(s) inside this directory
 
         //AndroidManifest
