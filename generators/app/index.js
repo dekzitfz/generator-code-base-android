@@ -90,8 +90,46 @@ module.exports = class extends Generator {
           {app_name: this.answers.name.replace(/\s/g, '')}
         );
 
-        //generate app folder and its subfolder(s)
+        // /app
         mkdirp(rootDir + '/app'); //root/app
+
+
+        /*----------start generate files in root/app/ ----------*/
+        //app/build.gradle
+        this.fs.copyTpl(
+          this.templatePath('app/build.gradle'),
+          this.destinationPath(rootDir + '/app/build.gradle'),
+          {package: this.answers.package}
+        );
+
+        //app/proguard-glide.pro
+        this.fs.copy(
+          this.templatePath('app/proguard-glide.pro'),
+          this.destinationPath(rootDir + '/app/proguard-glide.pro')
+        );
+
+        //app/proguard-gson.pro
+        this.fs.copyTpl(
+          this.templatePath('app/proguard-gson.pro'),
+          this.destinationPath(rootDir + '/app/proguard-gson.pro'),
+          {package: this.answers.package}
+        );
+
+        //app/proguard-retrofit.pro
+        this.fs.copy(
+          this.templatePath('app/proguard-retrofit.pro'),
+          this.destinationPath(rootDir + '/app/proguard-retrofit.pro')
+        );
+
+        //app/proguard-rules.pro
+        this.fs.copy(
+          this.templatePath('app/proguard-rules.pro'),
+          this.destinationPath(rootDir + '/app/proguard-rules.pro')
+        );
+
+
+      
+        //generate app folder and its subfolder(s)
         mkdirp(rootDir + '/app/libs'); //root/app/libs
         mkdirp(rootDir + '/app/src'); //root/app/src
         mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir); //root/app/src/androidTest/java/YOUR_PACKAGE_NAME
