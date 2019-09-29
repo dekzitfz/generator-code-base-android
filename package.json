@@ -1,14 +1,22 @@
 {
   "name": "generator-android-kotlin-mvvm",
   "version": "1.0.1",
-  "description": "",
+  "description": "Android Boilerplate Code with Kotlin & MVVM",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dekzitfz/generator-code-base-android"
+  },
   "files": [
     "generators"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "boilerplate",
+    "android",
+    "kotlin",
+    "mvvm"
   ],
-  "author": "Adi Andrea",
+  "author": "Adi Andrea <dekz.itfz@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "mkdirp": "^0.5.1",
