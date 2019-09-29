@@ -163,12 +163,47 @@ module.exports = class extends Generator {
           this.templatePath('app/src/main/java/com/example/app/App.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/App.kt'),
           {package: this.answers.package}
-        );        
-        
+        );
 
-        // this.fs.copy(
-        //   this.templatePath('file.txt'),
-        //   this.destinationPath(packageDir +'/file.txt')
-        // );
+
+        /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/base ----------*/
+        //app/src/main/java/YOUR_PACKAGE_PATH/base
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/base');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/base/AppViewModelFactory.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/base/AppViewModelFactory.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/AppViewModelFactory.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseActivity.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/base/BaseActivity.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/BaseActivity.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseFragment.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/base/BaseFragment.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/BaseFragment.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseFragmentViewModel.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/base/BaseFragmentViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/BaseFragmentViewModel.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseViewModel.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/base/BaseViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/BaseViewModel.kt'),
+          {package: this.answers.package}
+        );
+
       }
 };
