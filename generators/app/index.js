@@ -210,5 +210,19 @@ module.exports = class extends Generator {
         //app/src/main/java/YOUR_PACKAGE_PATH/data
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data');
 
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/DataManager.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/DataManager.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/DataManager.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/PreferencesHelper.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/PreferencesHelper.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/PreferencesHelper.kt'),
+          {package: this.answers.package}
+        );
+
       }
 };
