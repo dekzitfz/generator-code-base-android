@@ -205,5 +205,10 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
+
+        /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/data ----------*/
+        //app/src/main/java/YOUR_PACKAGE_PATH/data
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data');
+
       }
 };
