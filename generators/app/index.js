@@ -224,5 +224,82 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
+
+        /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/di ----------*/
+        //app/src/main/java/YOUR_PACKAGE_PATH/di
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/di');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/component
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/component');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/component/AppComponent.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/component/AppComponent.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/component/AppComponent.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/modules
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/modules');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/AppModule.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/modules/AppModule.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/AppModule.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/BuildersModule.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/modules/BuildersModule.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/BuildersModule.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/FragmentBuildersModule.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/modules/FragmentBuildersModule.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/FragmentBuildersModule.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/NetworkModule.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/modules/NetworkModule.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/NetworkModule.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/ViewModelModule.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/modules/ViewModelModule.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/ViewModelModule.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/scopes
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/scopes');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/scopes/ActivityContext.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/scopes/ActivityContext.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/scopes/ActivityContext.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/scopes/ApplicationContext.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/scopes/ApplicationContext.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/scopes/ApplicationContext.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/di/scopes/ViewModelKey.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/di/scopes/ViewModelKey.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/scopes/ViewModelKey.kt'),
+          {package: this.answers.package}
+        );
+
       }
 };
