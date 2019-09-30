@@ -229,18 +229,12 @@ module.exports = class extends Generator {
         //app/src/main/java/YOUR_PACKAGE_PATH/di
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/di');
 
-        //app/src/main/java/YOUR_PACKAGE_PATH/component
-        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/component');
-
         //app/src/main/java/YOUR_PACKAGE_PATH/di/component/AppComponent.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/di/component/AppComponent.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/component/AppComponent.kt'),
           {package: this.answers.package}
         );
-
-        //app/src/main/java/YOUR_PACKAGE_PATH/modules
-        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/modules');
 
         //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/AppModule.kt
         this.fs.copyTpl(
@@ -276,9 +270,6 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/ViewModelModule.kt'),
           {package: this.answers.package}
         );
-
-        //app/src/main/java/YOUR_PACKAGE_PATH/scopes
-        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/scopes');
 
         //app/src/main/java/YOUR_PACKAGE_PATH/di/scopes/ActivityContext.kt
         this.fs.copyTpl(
@@ -341,6 +332,28 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonViewModel.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonViewModel.kt'),
+          {package: this.answers.package}
+        );
+
+
+        /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/model ----------*/
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/model/api');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api/pokemon
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/model/api/pokemon');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api/pokemon/Pokemon.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/model/api/pokemon/Pokemon.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/model/api/pokemon/Pokemon.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api/pokemon/PokemonResponse.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/model/api/pokemon/PokemonResponse.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/model/api/pokemon/PokemonResponse.kt'),
           {package: this.answers.package}
         );
 
