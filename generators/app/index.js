@@ -368,5 +368,17 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/network/ApiService.kt'),
           {package: this.answers.package}
         );
+
+
+        /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/util ----------*/
+        //app/src/main/java/YOUR_PACKAGE_PATH/util
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/util');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/util/NetworkState.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/util/NetworkState.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/util/NetworkState.kt'),
+          {package: this.answers.package}
+        );
       }
 };
