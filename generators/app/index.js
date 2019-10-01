@@ -395,6 +395,34 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/drawable-v24 ----------*/
+        //app/src/main/res/drawable-v24
+        mkdirp(rootDir + '/app/src/main/res/drawable-v24');
+
+        //app/src/main/res/drawable-v24/ic_launcher_foreground.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/drawable-v24/ic_launcher_foreground.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/drawable-v24/ic_launcher_foreground.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/layout ----------*/
+        //app/src/main/res/layout
+        mkdirp(rootDir + '/app/src/main/res/layout');
+
+        //app/src/main/res/layout/activity_list_pokemon.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/activity_list_pokemon.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/activity_list_pokemon.xml')
+        );
+
+        //app/src/main/res/layout/item_pokemon.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/item_pokemon.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/item_pokemon.xml')
+        );
+
+
 
       }
 };
