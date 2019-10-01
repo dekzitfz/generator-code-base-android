@@ -446,14 +446,14 @@ module.exports = class extends Generator {
 
         //app/src/main/res/mipmap-hdpi/ic_launcher_round.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher_round.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml')
+          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher_round.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher_round.png')
         );
 
         //app/src/main/res/mipmap-hdpi/ic_launcher.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher.xml')
+          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher.png')
         );
 
 
@@ -463,14 +463,14 @@ module.exports = class extends Generator {
 
         //app/src/main/res/mipmap-mdpi/ic_launcher_round.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher_round.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher_round.xml')
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher_round.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher_round.png')
         );
 
         //app/src/main/res/mipmap-mdpi/ic_launcher.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher.xml')
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher.png')
         );
 
 
@@ -480,14 +480,14 @@ module.exports = class extends Generator {
 
         //app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml')
+          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher_round.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png')
         );
 
         //app/src/main/res/mipmap-xhdpi/ic_launcher.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher.xml')
+          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher.png')
         );
 
 
@@ -497,14 +497,14 @@ module.exports = class extends Generator {
 
         //app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml')
+          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png')
         );
 
         //app/src/main/res/mipmap-xxhdpi/ic_launcher.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher.xml')
+          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher.png')
         );
 
 
@@ -514,14 +514,14 @@ module.exports = class extends Generator {
 
         //app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml')
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png')
         );
 
         //app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml
         this.fs.copy(
-          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml'),
-          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml')
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png')
         );
 
 
@@ -546,6 +546,26 @@ module.exports = class extends Generator {
         this.fs.copy(
           this.templatePath('app/src/main/res/values/styles.xml'),
           this.destinationPath(rootDir + '/app/src/main/res/values/styles.xml')
+        );
+
+
+        /*----------start generate files in root/gradle ----------*/
+        //gradle
+        mkdirp(rootDir + '/gradle');
+
+        //gradle/wrapper
+        mkdirp(rootDir + '/gradle/wrapper');
+
+        //gradle/wrapper/gradle-wrapper.jar
+        this.fs.copy(
+          this.templatePath('gradle/wrapper/gradle-wrapper.jar'),
+          this.destinationPath(rootDir + '/gradle/wrapper/gradle-wrapper.jar')
+        );
+
+        //gradle/wrapper/gradle-wrapper.properties
+        this.fs.copy(
+          this.templatePath('gradle/wrapper/gradle-wrapper.properties'),
+          this.destinationPath(rootDir + '/gradle/wrapper/gradle-wrapper.properties')
         );
 
 
