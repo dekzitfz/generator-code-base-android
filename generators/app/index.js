@@ -525,6 +525,30 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/values ----------*/
+        //app/src/main/res/values
+        mkdirp(rootDir + '/app/src/main/res/values');
+
+        //app/src/main/res/values/colors.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/values/colors.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/colors.xml')
+        );
+
+        //app/src/main/res/values/strings.xml
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/res/values/strings.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/strings.xml'),
+          {app_name: this.answers.name.replace(/\s/g, '')}
+        );
+
+        //app/src/main/res/values/styles.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/values/styles.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/styles.xml')
+        );
+
+
 
       }
 };

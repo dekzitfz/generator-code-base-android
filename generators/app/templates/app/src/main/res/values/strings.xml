@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BaseAndroidKotlinMvvm</string>
+    <string name="app_name"><%= app_name %></string>
     <string name="success">success</string>
     <string name="running">running</string>
 </resources>
