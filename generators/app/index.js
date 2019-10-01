@@ -380,5 +380,21 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/util/NetworkState.kt'),
           {package: this.answers.package}
         );
+
+        
+        /*----------start generate files in root/app/src/main/res ----------*/
+
+        /*----------start generate files in root/app/src/main/res/drawable ----------*/
+        //app/src/main/res/drawable
+        mkdirp(rootDir + '/app/src/main/res');
+
+        //app/src/main/res/drawable/ic_launcher_background.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/drawable/ic_launcher_background.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/drawable/ic_launcher_background.xml')
+        );
+
+
+
       }
 };
