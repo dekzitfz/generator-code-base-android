@@ -423,6 +423,23 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/mipmap-anydpi-v26 ----------*/
+        //app/src/main/res/mipmap-anydpi-v26
+        mkdirp(rootDir + '/app/src/main/res/mipmap-anydpi-v26');
+
+        //app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml')
+        );
+
+
 
       }
 };
