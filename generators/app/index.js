@@ -508,6 +508,23 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/mipmap-xxxhdpi ----------*/
+        //app/src/main/res/mipmap-xxxhdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-xxxhdpi');
+
+        //app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml')
+        );
+
+
 
       }
 };
