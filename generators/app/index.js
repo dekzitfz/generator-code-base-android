@@ -442,7 +442,7 @@ module.exports = class extends Generator {
 
         /*----------start generate files in root/app/src/main/res/mipmap-hdpi ----------*/
         //app/src/main/res/mipmap-hdpi
-        mkdirp(rootDir + '/app/src/main/res/mipmap-anydpi-v26');
+        mkdirp(rootDir + '/app/src/main/res/mipmap-hdpi');
 
         //app/src/main/res/mipmap-hdpi/ic_launcher_round.xml
         this.fs.copy(
@@ -456,6 +456,22 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher.xml')
         );
 
+
+        /*----------start generate files in root/app/src/main/res/mipmap-mdpi ----------*/
+        //app/src/main/res/mipmap-mdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-mdpi');
+
+        //app/src/main/res/mipmap-mdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-mdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher.xml')
+        );
 
 
 
