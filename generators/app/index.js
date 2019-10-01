@@ -423,6 +423,132 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/mipmap-anydpi-v26 ----------*/
+        //app/src/main/res/mipmap-anydpi-v26
+        mkdirp(rootDir + '/app/src/main/res/mipmap-anydpi-v26');
+
+        //app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/mipmap-hdpi ----------*/
+        //app/src/main/res/mipmap-hdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-hdpi');
+
+        //app/src/main/res/mipmap-hdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-hdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-hdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-hdpi/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/mipmap-mdpi ----------*/
+        //app/src/main/res/mipmap-mdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-mdpi');
+
+        //app/src/main/res/mipmap-mdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-mdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-mdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-mdpi/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/mipmap-xhdpi ----------*/
+        //app/src/main/res/mipmap-xhdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-xhdpi');
+
+        //app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-xhdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xhdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xhdpi/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/mipmap-xxhdpi ----------*/
+        //app/src/main/res/mipmap-xxhdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-xxhdpi');
+
+        //app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-xxhdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxhdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxhdpi/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/mipmap-xxxhdpi ----------*/
+        //app/src/main/res/mipmap-xxxhdpi
+        mkdirp(rootDir + '/app/src/main/res/mipmap-xxxhdpi');
+
+        //app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.xml')
+        );
+
+        //app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/mipmap-xxxhdpi/ic_launcher.xml')
+        );
+
+
+        /*----------start generate files in root/app/src/main/res/values ----------*/
+        //app/src/main/res/values
+        mkdirp(rootDir + '/app/src/main/res/values');
+
+        //app/src/main/res/values/colors.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/values/colors.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/colors.xml')
+        );
+
+        //app/src/main/res/values/strings.xml
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/res/values/strings.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/strings.xml'),
+          {app_name: this.answers.name.replace(/\s/g, '')}
+        );
+
+        //app/src/main/res/values/styles.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/values/styles.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/values/styles.xml')
+        );
+
+
 
       }
 };
