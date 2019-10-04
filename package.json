@@ -1,6 +1,6 @@
 {
   "name": "generator-android-kotlin-mvvm",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Android Boilerplate Code with Kotlin & MVVM",
   "repository": {
     "type": "git",
