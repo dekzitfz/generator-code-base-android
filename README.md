@@ -2,7 +2,7 @@
 
 A Boilerplate code generator for creating Android project.
 
-https://www.npmjs.com/package/generator-android-kotlin-mvvm
+[![npm version](https://badge.fury.io/js/generator-android-kotlin-mvvm.svg)](https://badge.fury.io/js/generator-android-kotlin-mvvm)
 
 
 ## How To Use
