@@ -5,6 +5,18 @@ A Boilerplate code generator for creating Android project.
 [![npm version](https://badge.fury.io/js/generator-android-kotlin-mvvm.svg)](https://badge.fury.io/js/generator-android-kotlin-mvvm)
 
 
+## Tech Stack
+
+- Kotlin
+- MVVM
+- Dagger 2
+- Retrofit 2
+- Pagging Library
+- ReactiveX
+- Timber
+- Glide
+
+
 ## How To Use
 
 Install yeoman using NPM
