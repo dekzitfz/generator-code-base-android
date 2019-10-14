@@ -17,6 +17,12 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [Glide](https://github.com/bumptech/glide)
 
 
+## TODO List:
+
+- [ ] Offline First (using Room)
+- [ ] Using Coroutines
+
+
 ## How To Use
 
 Install yeoman using NPM
