@@ -21,6 +21,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 
 - [ ] Offline First (using Room)
 - [ ] Using Coroutines
+- [ ] Create Unit Test
 
 
 ## How To Use
