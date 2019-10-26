@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import <%= package %>.data.DataManager
+import <%= package %>.data.local.pokemon.LocalPokemon
 import <%= package %>.model.api.pokemon.Pokemon
 import <%= package %>.util.NetworkState
 import timber.log.Timber
@@ -60,5 +61,20 @@ class ListPokemonDataSource (private var dataManager: DataManager): PageKeyedDat
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Pokemon>) {}
+
+    private fun convertToLocal(data: List<Pokemon>): List<LocalPokemon> {
+        val result: MutableList<LocalPokemon> = mutableListOf()
+        for(pokemon in data){
+            result.add(
+                LocalPokemon(
+                    0,
+                    pokemon.name,
+                    pokemon.getImage()
+                )
+            )
+        }
+
+        return result
+    }
 
 }

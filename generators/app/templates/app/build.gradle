@@ -49,6 +49,7 @@ android {
 ext {
     retrofit = '2.6.1'
     daggerVersion = '2.21'
+    room = '2.2.1'
 }
 
 dependencies {
@@ -62,6 +63,13 @@ dependencies {
     implementation 'com.intuit.sdp:sdp-android:1.0.4'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    //room
+    implementation "androidx.room:room-runtime:$room"
+    kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-ktx:$room"
+    implementation "androidx.room:room-rxjava2:$room"
+    testImplementation "androidx.room:room-testing:$room"
 
     //Test
     testImplementation 'junit:junit:4.12'
