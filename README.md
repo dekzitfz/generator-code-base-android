@@ -19,7 +19,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 
 ## TODO List:
 
-- [ ] Offline First (using Room)
+- [ ] Offline First (using Room and paging lib)
 - [ ] Using Coroutines
 - [ ] Create Unit Test
 - [ ] Add Example Usage of Fragment
