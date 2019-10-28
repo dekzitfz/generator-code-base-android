@@ -1,6 +1,6 @@
 # Code Base Generator for Android Project
 
-A Boilerplate code generator for creating Android project. Using fully Kotlin and MVVM pattern that refer to Android Jetpack.
+A Boilerplate code generator for creating Android project. Using fully Kotlin and MVVM pattern that refer to Android Jetpack. Because Im tired to setup Dagger and other stuffs everytime initializing a new project.
 
 [![npm version](https://badge.fury.io/js/generator-android-kotlin-mvvm.svg)](https://badge.fury.io/js/generator-android-kotlin-mvvm)
 
