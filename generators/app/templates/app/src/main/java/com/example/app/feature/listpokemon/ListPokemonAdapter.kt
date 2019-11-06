@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import <%= package %>.R
-import <%= package %>.model.api.pokemon.Pokemon
+import <%= package %>.data.local.pokemon.LocalPokemon
 import kotlinx.android.synthetic.main.item_pokemon.view.*
 
 class ListPokemonAdapter:
-    PagedListAdapter<Pokemon, ListPokemonAdapter.PokemonVH>(DIFF_CALLBACK) {
+    PagedListAdapter<LocalPokemon, ListPokemonAdapter.PokemonVH>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonVH =
         PokemonVH(LayoutInflater.from(parent.context)
@@ -21,17 +21,17 @@ class ListPokemonAdapter:
     override fun onBindViewHolder(holder: PokemonVH, position: Int) {
         val pokemon = getItem(position)
         Glide.with(holder.itemView.context)
-            .load(pokemon?.getImage())
+            .load(pokemon?.pokemonImageUrl)
             .placeholder(R.mipmap.ic_launcher_round)
             .into(holder.itemView.image)
-        holder.itemView.name.text = pokemon?.name
+        holder.itemView.name.text = pokemon?.pokemonName
     }
 
     companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Pokemon>(){
-            override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean
-                    = oldItem.name.equals(newItem.name)
-            override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon): Boolean
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LocalPokemon>(){
+            override fun areItemsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon): Boolean
+                    = oldItem.pokemonName == newItem.pokemonName
+            override fun areContentsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon): Boolean
                     = oldItem == newItem
         }
     }
