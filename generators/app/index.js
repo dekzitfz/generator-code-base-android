@@ -195,6 +195,33 @@ module.exports = class extends Generator {
         //app/src/main/java/YOUR_PACKAGE_PATH/data
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data');
 
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data/local');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon/LocalPokemon.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/local/pokemon/LocalPokemon.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon/LocalPokemon.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon/LocalPokemonDao.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/local/pokemon/LocalPokemonDao.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon/LocalPokemonDao.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/AppDatabase.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/AppDatabase.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/AppDatabase.kt'),
+          {package: this.answers.package}
+        );
+
         //app/src/main/java/YOUR_PACKAGE_PATH/data/DataManager.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/data/DataManager.kt'),
@@ -225,7 +252,7 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/di/modules/AppModule.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/AppModule.kt'),
-          {package: this.answers.package}
+          {package: this.answers.package, app_name: this.answers.name.replace(/\s/g, '')}
         );
 
         //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/BuildersModule.kt
