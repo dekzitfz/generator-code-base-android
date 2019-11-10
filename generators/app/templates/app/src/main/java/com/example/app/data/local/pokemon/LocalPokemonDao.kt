@@ -1,13 +1,15 @@
 package <%= package %>.data.local.pokemon
 
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.room.*
-import <%= package %>.model.api.pokemon.Pokemon
 
 @Dao
 interface LocalPokemonDao {
     @Query("SELECT * FROM pokemon")
-    fun loadAllPokemon(): LiveData<List<LocalPokemon>>
+    fun loadAllPokemonPaged(): DataSource.Factory<Int, LocalPokemon>
+
+    @Query("SELECT * FROM pokemon")
+    fun loadAllPokemon(): List<LocalPokemon>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveAllPokemon(pokemonList: List<LocalPokemon>)

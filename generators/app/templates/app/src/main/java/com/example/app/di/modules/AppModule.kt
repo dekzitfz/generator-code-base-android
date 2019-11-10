@@ -20,7 +20,7 @@ class AppModule {
     @Provides
     @Singleton
     fun provideAppDatabase(application: App): AppDatabase {
-        return Room.databaseBuilder(application, AppDatabase::class.java, "<%= app_name %>-db")
+        return Room.databaseBuilder(application, AppDatabase::class.java, "<%= app_name %>.db")
             .build()
     }
 

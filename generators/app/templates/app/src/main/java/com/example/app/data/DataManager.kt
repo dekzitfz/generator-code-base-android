@@ -1,7 +1,6 @@
 package <%= package %>.data
 
 import <%= package %>.data.local.pokemon.LocalPokemon
-import <%= package %>.model.api.pokemon.Pokemon
 import <%= package %>.model.api.pokemon.PokemonResponse
 import <%= package %>.network.APIService
 import io.reactivex.Completable
@@ -11,8 +10,7 @@ import javax.inject.Singleton
 import javax.inject.Inject
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
-import android.R.attr.category
-import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 
 
 @Singleton
@@ -30,14 +28,8 @@ class DataManager
         }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
 
-    fun saveAllPokemonToLocalFromStart(listPokemon: List<LocalPokemon>): Completable {
-        return Completable.fromAction {
-            localDatabase.PokemonDao().renewAllData(listPokemon)
-        }.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    }
-
-    fun loadAllPokemonFromLocal(): LiveData<List<LocalPokemon>> {
-        return localDatabase.PokemonDao().loadAllPokemon()
+    fun loadAllPokemonFromLocal(): DataSource.Factory<Int, LocalPokemon> {
+        return localDatabase.PokemonDao().loadAllPokemonPaged()
     }
 
     /* ---------------------------------------- Network ----------------------------------------- */
