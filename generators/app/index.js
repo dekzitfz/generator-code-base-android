@@ -130,6 +130,25 @@ module.exports = class extends Generator {
         mkdirp(rootDir + '/app/src/main');
 
 
+        /*----------start generate files in root/app/src/androidTest ----------*/
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room
+        mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir + '/room');
+
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room/MigrationTest.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/androidTest/java/com/example/app/room/MigrationTest.kt'),
+          this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/MigrationTest.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room/MigrationUtil.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/androidTest/java/com/example/app/room/MigrationUtil.kt'),
+          this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/MigrationUtil.kt'),
+          {package: this.answers.package}
+        );
+
+
         /*----------start generate files in root/app/src/main ----------*/
         //app/src/main/AndroidManifest.xml
         this.fs.copyTpl(
@@ -323,20 +342,6 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonAdapter.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonAdapter.kt'),
-          {package: this.answers.package}
-        );
-
-        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonDataFactory.kt
-        this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonDataFactory.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonDataFactory.kt'),
-          {package: this.answers.package}
-        );
-
-        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonDataSource.kt
-        this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonDataSource.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonDataSource.kt'),
           {package: this.answers.package}
         );
 

@@ -14,7 +14,18 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = ["room.schemaLocation":
+                                     "$projectDir/schemas".toString()]
+            }
+        }
     }
+
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -70,11 +81,14 @@ dependencies {
     implementation "androidx.room:room-ktx:$room"
     implementation "androidx.room:room-rxjava2:$room"
     testImplementation "androidx.room:room-testing:$room"
+    androidTestImplementation "androidx.room:room-testing:$room"
 
     //Test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.1'
 
     //Others
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'

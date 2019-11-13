@@ -11,6 +11,9 @@ interface LocalPokemonDao {
     @Query("SELECT * FROM pokemon")
     fun loadAllPokemon(): List<LocalPokemon>
 
+    @Query("SELECT * FROM pokemon WHERE pokemon_name=:name")
+    fun loadPokemonById(name: String): LocalPokemon
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveAllPokemon(pokemonList: List<LocalPokemon>)
 
