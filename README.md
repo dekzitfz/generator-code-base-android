@@ -19,7 +19,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 
 ## TODO List:
 
-- [ ] Offline First (using Room and paging lib)
+- [x] Offline First (using Room and paging lib)
 - [ ] Using Coroutines
 - [ ] Create Unit Test
 - [ ] Add Example Usage of Fragment
@@ -53,3 +53,34 @@ yo android-kotlin-mvvm
 ```
 
 Open project using Android Studio, build, and done!
+
+## Testing Local Database Migration
+
+This boilerplate using Room to store Local Database, to handle each migration you can refer to existing sample. In this sample we add new column in existing table.
+
+After first project build, make sure database schemas generated for 1st version, it should be located in
+ 
+```YOUR_PROJECT_DIR\app\schemas\YOUR_PACKAGE_PATH.data.AppDatabase\1.json```
+
+if its not exist, try to rebuild the project.
+
+
+do changes on this 3 files:
+
+1. ```AppDatabase.kt```
+
+change version number from 1 to 2. (Migration query has been included, ```MIGRATION_1_2```)
+
+2. ```LocalPokemon.kt```
+
+since we adding column, we need update the entity with the new column.
+
+3. ```AppModule.kt```
+
+add migration query to the database builder.
+
+for details you can also check the TODOs.
+
+then rebuild the project, new schema version should be generated, ```2.json```
+
+go to ```MigrationTest.kt``` and run test using device or emulator.
