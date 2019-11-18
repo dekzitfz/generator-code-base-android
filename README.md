@@ -23,6 +23,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [ ] Using Coroutines
 - [ ] Create Unit Test
 - [ ] Add Example Usage of Fragment
+- [ ] Android Jetpack Navigation
 
 
 ## How To Use
