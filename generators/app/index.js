@@ -75,6 +75,12 @@ module.exports = class extends Generator {
           {app_name: this.answers.name.replace(/\s/g, '')}
         );
 
+        //.gitignore
+        this.fs.copy(
+          this.templatePath('.gitignore'),
+          this.destinationPath(rootDir + '/.gitignore')
+        );
+
         // /app
         mkdirp(rootDir + '/app'); //root/app
 
