@@ -31,8 +31,8 @@ module.exports = class extends Generator {
       writing() {
         this.log("app name", this.answers.name);
         this.log("package name", this.answers.package);
-        this.log("target SDK", this.answers.targetSDK);
-        this.log("minimum SDK", this.answers.minSDK);
+        // this.log("target SDK", this.answers.targetSDK);
+        // this.log("minimum SDK", this.answers.minSDK);
 
         //generate package app folder path
         var packageDir = this.answers.package.replace(/\./g, '/');
@@ -76,10 +76,10 @@ module.exports = class extends Generator {
         );
 
         //.gitignore
-        this.fs.copy(
-          this.templatePath('.gitignore'),
-          this.destinationPath(rootDir + '/.gitignore')
-        );
+        // this.fs.copy(
+        //   this.templatePath('.gitignore'),
+        //   this.destinationPath(rootDir + '/.gitignore')
+        // );
 
         // /app
         mkdirp(rootDir + '/app'); //root/app
