@@ -18,5 +18,4 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(){
     }
 
     protected abstract val viewModelClass: Class<T>
-    protected abstract fun getLayout(): Int
 }
