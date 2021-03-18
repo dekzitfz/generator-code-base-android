@@ -19,7 +19,8 @@
   "author": "Adi Andrea <dekz.itfz@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "axios": ">=0.21.1",
     "mkdirp": "^1.0.4",
-    "yeoman-generator": "^4.12.0"
+    "yeoman-generator": "^4.13.0"
   }
 }
