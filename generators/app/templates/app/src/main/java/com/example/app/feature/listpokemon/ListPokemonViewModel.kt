@@ -23,7 +23,7 @@ class ListPokemonViewModel
 
     @SuppressLint("CheckResult")
     fun loadAllPokemonFromNetwork(){
-        dataManager.reqPokemon(0, 964)
+        dataManager.reqPokemon(0, 1118)
             .doOnSubscribe(this::addDisposable)
             .subscribe(
                 {res ->

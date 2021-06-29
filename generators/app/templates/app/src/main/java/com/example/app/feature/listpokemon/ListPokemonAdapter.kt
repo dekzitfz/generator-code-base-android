@@ -1,5 +1,6 @@
 package <%= package %>.feature.listpokemon
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -9,6 +10,7 @@ import com.bumptech.glide.Glide
 import <%= package %>.R
 import <%= package %>.data.local.pokemon.LocalPokemon
 import <%= package %>.databinding.ItemPokemonBinding
+import <%= package %>.feature.detailpokemon.DetailPokemonActivity
 
 class ListPokemonAdapter:
     PagedListAdapter<LocalPokemon, ListPokemonAdapter.PokemonVH>(DIFF_CALLBACK) {
@@ -26,6 +28,13 @@ class ListPokemonAdapter:
                 .placeholder(R.mipmap.ic_launcher_round)
                 .into(binding.image)
             binding.name.text = pokemon?.pokemonName
+
+            binding.root.setOnClickListener {
+                holder.itemView.context.startActivity(
+                    Intent(holder.itemView.context, DetailPokemonActivity::class.java)
+                        .putExtra(DetailPokemonActivity.POKEMON_NAME, pokemon?.pokemonName)
+                )
+            }
         }
     }
 

@@ -73,20 +73,21 @@ android {
 
 ext {
     retrofit = '2.9.0'
-    daggerVersion = '2.21'
+    daggerVersion = '2.37'
     room = '2.2.5'
+    lifecycle_version = '2.3.1'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'com.intuit.sdp:sdp-android:1.0.4'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
@@ -106,13 +107,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit-ktx:1.1.2'
 
     //Others
-    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
-    implementation 'pub.devrel:easypermissions:2.0.1'
+    debugImplementation 'com.github.amitshekhariitbhu.Android-Debug-Database:debug-db:v1.0.6'
+    implementation 'pub.devrel:easypermissions:3.0.0'
 
-    //ViewModel
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-common-java8:2.2.0'
-    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    //ViewModel,LiveData,Saved state module for ViewModel,Annotation processor
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //paging library
     implementation "androidx.paging:paging-runtime-ktx:2.1.2"

@@ -2,6 +2,7 @@ package <%= package %>.base
 
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import dagger.android.support.AndroidSupportInjection
 import androidx.lifecycle.ViewModelProvider
@@ -10,7 +11,7 @@ import javax.inject.Inject
 abstract class BaseFragment<T : BaseViewModel> : Fragment() {
 
     @Inject lateinit var factory: ViewModelProvider.Factory
-    protected abstract var viewModel: T
+    protected lateinit var viewModel: T
 
     protected abstract val viewModelClass: Class<T>
 
@@ -19,8 +20,8 @@ abstract class BaseFragment<T : BaseViewModel> : Fragment() {
         super.onAttach(context)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this, factory).get(viewModelClass)
     }
 }

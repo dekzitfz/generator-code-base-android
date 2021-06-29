@@ -11,6 +11,7 @@ import javax.inject.Inject
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 import androidx.paging.DataSource
+import <%= package %>.model.api.detailpokemon.DetailPokemonResponse
 
 
 @Singleton
@@ -36,6 +37,12 @@ class DataManager
 
     fun reqPokemon(page: Int, limit: Int): Single<Response<PokemonResponse>> {
         return api.requestListPokemon(limit, page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    fun reqDetailPokemon(name: String): Single<Response<DetailPokemonResponse>> {
+        return api.requestDetailPokemon(name)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
