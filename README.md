@@ -9,6 +9,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 
 - [Kotlin](https://kotlinlang.org/)
 - [MVVM](https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel)
+- [View Binding](https://developer.android.com/topic/libraries/view-binding)
 - [Dagger 2](https://github.com/google/dagger)
 - [Retrofit 2](https://github.com/square/retrofit)
 - [Paging Library](https://developer.android.com/topic/libraries/architecture/paging)
@@ -20,10 +21,10 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 ## TODO List:
 
 - [x] Offline First (using Room and paging lib)
+- [x] Add Example Usage of Fragment
+- [ ] Create Documentation Code Snippet
 - [ ] Add example for using Coroutines
 - [ ] Create Unit Test
-- [ ] Add Example Usage of Fragment
-- [ ] Android Jetpack Navigation
 
 
 ## How To Use
