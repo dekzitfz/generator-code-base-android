@@ -356,19 +356,19 @@ module.exports = class extends Generator {
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesAdapter.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesAdapter.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/MovesAdapter.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesAdapter.kt'),
           {package: this.answers.package}
         );
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesFragment.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesFragment.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/MovesFragment.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesFragment.kt'),
           {package: this.answers.package}
         );
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesViewModel.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesViewModel.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/MovesViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesViewModel.kt'),
           {package: this.answers.package}
         );
 
