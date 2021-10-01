@@ -23,7 +23,10 @@ constructor(@ApplicationContext context: Context) {
     }
 
     fun putString(key: String, value: String) {
-        mPref.edit().putString(key, value).apply()
+        val editor = mPref.edit()
+        editor.putString(key, value)
+        editor.commit()
+
     }
 
     fun getString(key: String): String? {
@@ -35,11 +38,15 @@ constructor(@ApplicationContext context: Context) {
     }
 
     fun putBoolean(key: String, value: Boolean) {
-        mPref.edit().putBoolean(key, value).apply()
+        val editor = mPref.edit()
+        editor.putBoolean(key, value)
+        editor.commit()
     }
 
     fun putInt(key: String, value: Int) {
-        mPref.edit().putInt(key, value).apply()
+        val editor = mPref.edit()
+        editor.putInt(key, value)
+        editor.commit()
     }
 
     fun getInt(key: String): Int {

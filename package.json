@@ -1,6 +1,6 @@
 {
   "name": "generator-android-kotlin-mvvm",
-  "version": "1.0.3",
+  "version": "1.5.1",
   "description": "Android Boilerplate Code with Kotlin & MVVM",
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
   "author": "Adi Andrea <dekz.itfz@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "mkdirp": "^0.5.1",
-    "yeoman-generator": "^1.1.1"
+    "axios": ">=0.21.1",
+    "mkdirp": "^1.0.4",
+    "yeoman-generator": "^4.13.0"
   }
 }

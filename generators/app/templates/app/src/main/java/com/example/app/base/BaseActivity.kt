@@ -3,7 +3,6 @@ package <%= package %>.base
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import dagger.android.AndroidInjection
 import javax.inject.Inject
 
@@ -15,10 +14,8 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        setContentView(getLayout())
-        viewModel = ViewModelProviders.of(this, factory).get(viewModelClass)
+        viewModel = ViewModelProvider(this, factory).get(viewModelClass)
     }
 
     protected abstract val viewModelClass: Class<T>
-    protected abstract fun getLayout(): Int
 }

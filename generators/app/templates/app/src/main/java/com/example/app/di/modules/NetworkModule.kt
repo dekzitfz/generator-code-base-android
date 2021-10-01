@@ -20,9 +20,13 @@ class NetworkModule{
     @Provides
     @Singleton
     fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        val loggingInterceptor = HttpLoggingInterceptor { message -> Timber.d(message) }
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
-        return loggingInterceptor
+        val logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                Timber.d(message)
+            }
+        })
+        logging.level = HttpLoggingInterceptor.Level.BODY
+        return logging
     }
 
     @Provides
@@ -32,7 +36,7 @@ class NetworkModule{
             .addInterceptor(httpLoggingInterceptor)
             .addInterceptor { chain ->
                 var original = chain.request()
-                val httpUrl = original.url().newBuilder().build()
+                val httpUrl = original.url.newBuilder().build()
                 original = original.newBuilder()
                     .url(httpUrl)
                     .build()

@@ -31,8 +31,8 @@ module.exports = class extends Generator {
       writing() {
         this.log("app name", this.answers.name);
         this.log("package name", this.answers.package);
-        this.log("target SDK", this.answers.targetSDK);
-        this.log("minimum SDK", this.answers.minSDK);
+        // this.log("target SDK", this.answers.targetSDK);
+        // this.log("minimum SDK", this.answers.minSDK);
 
         //generate package app folder path
         var packageDir = this.answers.package.replace(/\./g, '/');
@@ -74,6 +74,12 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/settings.gradle'),
           {app_name: this.answers.name.replace(/\s/g, '')}
         );
+
+        //.gitignore
+        // this.fs.copy(
+        //   this.templatePath('.gitignore'),
+        //   this.destinationPath(rootDir + '/.gitignore')
+        // );
 
         // /app
         mkdirp(rootDir + '/app'); //root/app
@@ -130,6 +136,25 @@ module.exports = class extends Generator {
         mkdirp(rootDir + '/app/src/main');
 
 
+        /*----------start generate files in root/app/src/androidTest ----------*/
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room
+        mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir + '/room');
+
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room/MigrationTest.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/androidTest/java/com/example/app/room/MigrationTest.kt'),
+          this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/MigrationTest.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room/MigrationUtil.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/androidTest/java/com/example/app/room/MigrationUtil.kt'),
+          this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/MigrationUtil.kt'),
+          {package: this.answers.package}
+        );
+
+
         /*----------start generate files in root/app/src/main ----------*/
         //app/src/main/AndroidManifest.xml
         this.fs.copyTpl(
@@ -176,13 +201,6 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
-        //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseFragmentViewModel.kt
-        this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/base/BaseFragmentViewModel.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/base/BaseFragmentViewModel.kt'),
-          {package: this.answers.package}
-        );
-
         //app/src/main/java/YOUR_PACKAGE_PATH/base/BaseViewModel.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/base/BaseViewModel.kt'),
@@ -194,6 +212,33 @@ module.exports = class extends Generator {
         /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/data ----------*/
         //app/src/main/java/YOUR_PACKAGE_PATH/data
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data/local');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon/LocalPokemon.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/local/pokemon/LocalPokemon.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon/LocalPokemon.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/local/pokemon/LocalPokemonDao.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/local/pokemon/LocalPokemonDao.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/local/pokemon/LocalPokemonDao.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/data/AppDatabase.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/data/AppDatabase.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/data/AppDatabase.kt'),
+          {package: this.answers.package}
+        );
 
         //app/src/main/java/YOUR_PACKAGE_PATH/data/DataManager.kt
         this.fs.copyTpl(
@@ -225,7 +270,7 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/di/modules/AppModule.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/di/modules/AppModule.kt'),
-          {package: this.answers.package}
+          {package: this.answers.package, app_name: this.answers.name.replace(/\s/g, '')}
         );
 
         //app/src/main/java/YOUR_PACKAGE_PATH/di/modules/BuildersModule.kt
@@ -282,6 +327,77 @@ module.exports = class extends Generator {
         //app/src/main/java/YOUR_PACKAGE_PATH/feature
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/feature');
 
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/basestat
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat');
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/basestat/BaseStatAdapter.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/basestat/BaseStatAdapter.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/BaseStatAdapter.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/basestat/BaseStatFragment.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/basestat/BaseStatFragment.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/BaseStatFragment.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/basestat/BaseStatViewModel.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/basestat/BaseStatViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/basestat/BaseStatViewModel.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves');
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesAdapter.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesAdapter.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesAdapter.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesFragment.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesFragment.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesFragment.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/moves/MovesViewModel.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/moves/MovesViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/moves/MovesViewModel.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/DetailPokemonActivity.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/DetailPokemonActivity.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/DetailPokemonActivity.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/DetailPokemonViewModel.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/DetailPokemonViewModel.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/DetailPokemonViewModel.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/TabAdapter.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/TabAdapter.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/TabAdapter.kt'),
+          {package: this.answers.package}
+        );
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/detailpokemon/TypeAdapter.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/detailpokemon/TypeAdapter.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/detailpokemon/TypeAdapter.kt'),
+          {package: this.answers.package}
+        );
+
+
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon');
 
@@ -299,20 +415,6 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
-        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonDataFactory.kt
-        this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonDataFactory.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonDataFactory.kt'),
-          {package: this.answers.package}
-        );
-
-        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonDataSource.kt
-        this.fs.copyTpl(
-          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonDataSource.kt'),
-          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonDataSource.kt'),
-          {package: this.answers.package}
-        );
-
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonViewModel.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonViewModel.kt'),
@@ -324,6 +426,16 @@ module.exports = class extends Generator {
         /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/model ----------*/
         //app/src/main/java/YOUR_PACKAGE_PATH/model/api
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/model/api');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api/detailpokemon
+        mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/model/api/detailpokemon');
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/model/api/detailpokemon/DetailPokemonResponse.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/model/api/detailpokemon/DetailPokemonResponse.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/model/api/detailpokemon/DetailPokemonResponse.kt'),
+          {package: this.answers.package}
+        );
 
         //app/src/main/java/YOUR_PACKAGE_PATH/model/api/pokemon
         mkdirp(rootDir + '/app/src/main/java/' + packageDir + '/model/api/pokemon');
@@ -379,6 +491,12 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/app/src/main/res/drawable/ic_launcher_background.xml')
         );
 
+        //app/src/main/res/drawable/sample_artwork.png
+        this.fs.copy(
+          this.templatePath('app/src/main/res/drawable/sample_artwork.png'),
+          this.destinationPath(rootDir + '/app/src/main/res/drawable/sample_artwork.png')
+        );
+
 
         /*----------start generate files in root/app/src/main/res/drawable-v24 ----------*/
         //app/src/main/res/drawable-v24
@@ -405,6 +523,42 @@ module.exports = class extends Generator {
         this.fs.copy(
           this.templatePath('app/src/main/res/layout/item_pokemon.xml'),
           this.destinationPath(rootDir + '/app/src/main/res/layout/item_pokemon.xml')
+        );
+
+        //app/src/main/res/layout/activity_detail_pokemon.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/activity_detail_pokemon.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/activity_detail_pokemon.xml')
+        );
+
+        //app/src/main/res/layout/fragment_base_stat.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/fragment_base_stat.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/fragment_base_stat.xml')
+        );
+
+        //app/src/main/res/layout/fragment_moves.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/fragment_moves.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/fragment_moves.xml')
+        );
+
+        //app/src/main/res/layout/view_pokemon_move.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/view_pokemon_move.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/view_pokemon_move.xml')
+        );
+
+        //app/src/main/res/layout/view_pokemon_stat.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/view_pokemon_stat.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/view_pokemon_stat.xml')
+        );
+
+        //app/src/main/res/layout/view_pokemon_type.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/layout/view_pokemon_type.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/layout/view_pokemon_type.xml')
         );
 
 
