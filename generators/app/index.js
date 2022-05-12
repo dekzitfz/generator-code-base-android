@@ -408,6 +408,13 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonDataSource.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonDataSource.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonDataSource.kt'),
+          {package: this.answers.package}
+        );
+
         //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonAdapter.kt
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonAdapter.kt'),

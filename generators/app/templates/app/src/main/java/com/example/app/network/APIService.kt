@@ -16,8 +16,8 @@ interface APIService {
     ): Single<Response<DetailPokemonResponse>>
 
     @GET("pokemon")
-    fun requestListPokemon(
+    suspend fun requestListPokemon(
         @Query("limit") limit: Int,
         @Query("offset") page: Int
-    ): Single<Response<PokemonResponse>>
+    ): Response<PokemonResponse>
 }

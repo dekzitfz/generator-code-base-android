@@ -1,7 +1,6 @@
 package <%= package %>.data
 
 import <%= package %>.data.local.pokemon.LocalPokemon
-import <%= package %>.model.api.pokemon.PokemonResponse
 import <%= package %>.network.APIService
 import io.reactivex.Completable
 import io.reactivex.Single
@@ -35,11 +34,7 @@ class DataManager
 
     /* ---------------------------------------- Network ----------------------------------------- */
 
-    fun reqPokemon(page: Int, limit: Int): Single<Response<PokemonResponse>> {
-        return api.requestListPokemon(limit, page)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
+    suspend fun reqPokemon(page: Int, limit: Int) = api.requestListPokemon(limit, page)
 
     fun reqDetailPokemon(name: String): Single<Response<DetailPokemonResponse>> {
         return api.requestDetailPokemon(name)

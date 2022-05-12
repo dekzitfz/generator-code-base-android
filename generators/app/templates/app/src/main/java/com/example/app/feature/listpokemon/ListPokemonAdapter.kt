@@ -3,17 +3,22 @@ package <%= package %>.feature.listpokemon
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import <%= package %>.R
-import <%= package %>.data.local.pokemon.LocalPokemon
 import <%= package %>.databinding.ItemPokemonBinding
 import <%= package %>.feature.detailpokemon.DetailPokemonActivity
+import <%= package %>.model.api.pokemon.Pokemon
+import androidx.paging.PagingDataAdapter
 
 class ListPokemonAdapter:
-    PagedListAdapter<LocalPokemon, ListPokemonAdapter.PokemonVH>(DIFF_CALLBACK) {
+    PagingDataAdapter<Pokemon, ListPokemonAdapter.PokemonVH>(DataComparator) {
+
+    object DataComparator : DiffUtil.ItemCallback<Pokemon>() {
+        override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon) = oldItem.name == newItem.name
+        override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon) = oldItem == newItem
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonVH =
         PokemonVH(ItemPokemonBinding.inflate(
@@ -24,26 +29,17 @@ class ListPokemonAdapter:
         with(holder){
             val pokemon = getItem(position)
             Glide.with(this.itemView.context)
-                .load(pokemon?.pokemonImageUrl)
+                .load(pokemon?.getImage())
                 .placeholder(R.mipmap.ic_launcher_round)
                 .into(binding.image)
-            binding.name.text = pokemon?.pokemonName
+            binding.name.text = pokemon?.name
 
             binding.root.setOnClickListener {
                 holder.itemView.context.startActivity(
                     Intent(holder.itemView.context, DetailPokemonActivity::class.java)
-                        .putExtra(DetailPokemonActivity.POKEMON_NAME, pokemon?.pokemonName)
+                        .putExtra(DetailPokemonActivity.POKEMON_NAME, pokemon?.name)
                 )
             }
-        }
-    }
-
-    companion object {
-        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<LocalPokemon>(){
-            override fun areItemsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon): Boolean
-                    = oldItem.pokemonName == newItem.pokemonName
-            override fun areContentsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon): Boolean
-                    = oldItem == newItem
         }
     }
 
