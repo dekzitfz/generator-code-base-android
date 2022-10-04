@@ -74,7 +74,7 @@ android {
 ext {
     retrofit = '2.9.0'
     daggerVersion = '2.37'
-    room = '2.2.5'
+    room = '2.4.3'
     lifecycle_version = '2.4.1'
 }
 
