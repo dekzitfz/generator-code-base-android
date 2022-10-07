@@ -25,7 +25,7 @@ constructor(@ApplicationContext context: Context) {
     fun putString(key: String, value: String) {
         val editor = mPref.edit()
         editor.putString(key, value)
-        editor.commit()
+        editor.apply()
 
     }
 
@@ -40,13 +40,13 @@ constructor(@ApplicationContext context: Context) {
     fun putBoolean(key: String, value: Boolean) {
         val editor = mPref.edit()
         editor.putBoolean(key, value)
-        editor.commit()
+        editor.apply()
     }
 
     fun putInt(key: String, value: Int) {
         val editor = mPref.edit()
         editor.putInt(key, value)
-        editor.commit()
+        editor.apply()
     }
 
     fun getInt(key: String): Int {

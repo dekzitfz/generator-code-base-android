@@ -14,7 +14,7 @@ abstract class BaseActivity<T : BaseViewModel> : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this, factory).get(viewModelClass)
+        viewModel = ViewModelProvider(this, factory)[viewModelClass]
     }
 
     protected abstract val viewModelClass: Class<T>
