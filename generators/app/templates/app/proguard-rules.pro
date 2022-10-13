@@ -57,7 +57,6 @@
 -keep interface android.support.v4.app.** { *; }
 -keep class com.actionbarsherlock.** { *; }
 -keep interface com.actionbarsherlock.** { *; }
--keep class android.support.v7.widget.SearchView { *; }
 
 # The support library contains references to newer platform versions.
 # Don't warn about those in case this app is linking against an older
@@ -74,8 +73,3 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
-
--keep public class android.support.design.widget.BottomNavigationView { *; }
--keep public class android.support.design.internal.BottomNavigationMenuView { *; }
--keep public class android.support.design.internal.BottomNavigationPresenter { *; }
--keep public class android.support.design.internal.BottomNavigationItemView { *; }
