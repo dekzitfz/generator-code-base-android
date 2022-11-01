@@ -23,7 +23,7 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [x] Offline First (using Room and paging lib)
 - [x] Add Example Usage of Fragment
 - [ ] Create Documentation Code Snippet
-- [ ] Add example for using Coroutines
+- [x] Add example for using Coroutines
 - [ ] Create Unit Test
 
 
