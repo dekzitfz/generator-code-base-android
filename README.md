@@ -16,11 +16,12 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [ReactiveX](https://github.com/ReactiveX/RxAndroid)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
+- [Kotlin DSL](https://android-developers.googleblog.com/2023/04/kotlin-dsl-is-now-default-for-new-gradle-builds.html)
 
 
 ## TODO List:
 
-- [x] Offline First (using Room and paging lib)
+- [ ] Offline First (using Room and paging lib)
 - [x] Add Example Usage of Fragment
 - [ ] Create Documentation Code Snippet
 - [x] Add example for using Coroutines
@@ -56,7 +57,13 @@ yo android-kotlin-mvvm
 
 Open project using Android Studio, build, and done!
 
+## Notes
+
+Make sure you are using java version 17 before try to sync/build the source. Configure it at android studio -> file -> project structure -> SDK location -> gradle settings -> gradle JDK
+
 ## Testing Local Database Migration
+
+notes: right now, room is configured but not used for default.
 
 This boilerplate using Room to store Local Database, to handle each migration you can refer to existing sample. In this sample we add new column in existing table.
 
