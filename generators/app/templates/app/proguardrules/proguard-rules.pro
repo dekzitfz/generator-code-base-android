@@ -41,13 +41,7 @@
 -keep public class * extends android.content.ContentProvider
 -keep public class * extends android.app.backup.BackupAgent
 -keep public class * extends android.preference.Preference
--keep public class * extends android.support.v4.app.Fragment
--keep public class * extends android.support.v4.app.DialogFragment
--keep public class * extends com.actionbarsherlock.app.SherlockListFragment
--keep public class * extends com.actionbarsherlock.app.SherlockFragment
--keep public class * extends com.actionbarsherlock.app.SherlockFragmentActivity
 -keep public class * extends android.app.Fragment
--keep public class com.android.vending.licensing.ILicensingService
 
 #Junit
 -dontwarn android.test.**
@@ -73,3 +67,5 @@
     public static **[] values();
     public static ** valueOf(java.lang.String);
 }
+
+-keep class com.google.android.gms.internal.** { *; }

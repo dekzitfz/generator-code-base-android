@@ -44,10 +44,10 @@ module.exports = class extends Generator {
         mkdirp(rootDir);
 
         /*----------start generate files in root directory ----------*/
-        //build.gradle (project)
+        //build.gradle.kts (project)
         this.fs.copy(
-          this.templatePath('build.gradle'),
-          this.destinationPath(rootDir + '/build.gradle')
+          this.templatePath('build.gradle.kts'),
+          this.destinationPath(rootDir + '/build.gradle.kts')
         );
 
         //gradle.properties
@@ -68,10 +68,10 @@ module.exports = class extends Generator {
           this.destinationPath(rootDir + '/gradlew.bat')
         );
 
-        //settings.gradle
+        //settings.gradle.kts
         this.fs.copyTpl(
-          this.templatePath('settings.gradle'),
-          this.destinationPath(rootDir + '/settings.gradle'),
+          this.templatePath('settings.gradle.kts'),
+          this.destinationPath(rootDir + '/settings.gradle.kts'),
           {app_name: this.answers.name.replace(/\s/g, '')}
         );
 
@@ -92,36 +92,39 @@ module.exports = class extends Generator {
         //app/src
         mkdirp(rootDir + '/app/src');
 
-        //app/build.gradle
+        //app/proguardrules
+        mkdirp(rootDir + '/app/src');
+
+        //app/build.gradle.kts
         this.fs.copyTpl(
-          this.templatePath('app/build.gradle'),
-          this.destinationPath(rootDir + '/app/build.gradle'),
+          this.templatePath('app/build.gradle.kts'),
+          this.destinationPath(rootDir + '/app/build.gradle.kts'),
           {package: this.answers.package}
         );
 
-        //app/proguard-glide.pro
+        //app/proguardrules/proguard-glide.pro
         this.fs.copy(
-          this.templatePath('app/proguard-glide.pro'),
-          this.destinationPath(rootDir + '/app/proguard-glide.pro')
+          this.templatePath('app/proguardrules/proguard-glide.pro'),
+          this.destinationPath(rootDir + '/app/proguardrules/proguard-glide.pro')
         );
 
-        //app/proguard-gson.pro
+        //app/proguardrules/proguard-gson.pro
         this.fs.copyTpl(
-          this.templatePath('app/proguard-gson.pro'),
-          this.destinationPath(rootDir + '/app/proguard-gson.pro'),
+          this.templatePath('app/proguardrules/proguard-gson.pro'),
+          this.destinationPath(rootDir + '/app/proguardrules/proguard-gson.pro'),
           {package: this.answers.package}
         );
 
-        //app/proguard-retrofit.pro
+        //app/proguardrules/proguard-retrofit.pro
         this.fs.copy(
-          this.templatePath('app/proguard-retrofit.pro'),
-          this.destinationPath(rootDir + '/app/proguard-retrofit.pro')
+          this.templatePath('app/proguardrules/proguard-retrofit.pro'),
+          this.destinationPath(rootDir + '/app/proguardrules/proguard-retrofit.pro')
         );
 
-        //app/proguard-rules.pro
+        //app/proguardrules/proguard-rules.pro
         this.fs.copy(
-          this.templatePath('app/proguard-rules.pro'),
-          this.destinationPath(rootDir + '/app/proguard-rules.pro')
+          this.templatePath('app/proguardrules/proguard-rules.pro'),
+          this.destinationPath(rootDir + '/app/proguardrules/proguard-rules.pro')
         );
 
 

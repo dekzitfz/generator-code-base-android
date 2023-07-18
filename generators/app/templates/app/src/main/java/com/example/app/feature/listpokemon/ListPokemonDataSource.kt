@@ -12,12 +12,12 @@ class ListPokemonDataSource(private val dataManager: DataManager) :
             val pageNumber = params.key ?: 0
             val response = dataManager.reqPokemon(pageNumber, params.loadSize)
             val pagedResponse = response.body()
-            val prevKey = if (pageNumber == 0) null else pageNumber - 1
+            val prevKey = if (pageNumber == 0) null else pageNumber - params.loadSize
 
             LoadResult.Page(
                 data = pagedResponse?.results!!,
                 prevKey = prevKey,
-                nextKey = if (pagedResponse.results.isNotEmpty()) pageNumber.plus(1) else null
+                nextKey = if (pagedResponse.results.isNotEmpty()) pageNumber.plus(params.loadSize) else null
             )
         } catch (e: Exception) {
             LoadResult.Error(e)
