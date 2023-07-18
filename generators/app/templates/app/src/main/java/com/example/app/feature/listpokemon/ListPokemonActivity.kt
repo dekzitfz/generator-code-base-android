@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.repeatOnLifecycle
+import kotlinx.coroutines.launch
 
 class ListPokemonActivity : BaseActivity<ListPokemonViewModel>(){
 
@@ -47,9 +50,11 @@ class ListPokemonActivity : BaseActivity<ListPokemonViewModel>(){
             }
         }
 
-        lifecycleScope.launchWhenCreated {
-            viewModel.dataFlow.collectLatest { pagingData ->
-                adapter?.submitData(pagingData)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.dataFlow.collectLatest { pagingData ->
+                    adapter?.submitData(pagingData)
+                }
             }
         }
 

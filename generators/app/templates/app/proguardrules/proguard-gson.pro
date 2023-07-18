@@ -19,6 +19,6 @@
 -keep class * implements com.google.gson.JsonSerializer
 -keep class * implements com.google.gson.JsonDeserializer
 
--keep class <%= package %>.model.** { <fields>; }
+-keep class id.cpp.takingorderfish.model.** { <fields>; }
 
 ##---------------End: proguard configuration for Gson  ----------
