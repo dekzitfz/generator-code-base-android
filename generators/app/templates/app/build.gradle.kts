@@ -9,7 +9,6 @@ plugins {
 android {
     namespace = "<%= package %>"
     compileSdk = 33
-    buildToolsVersion = "33.0.0"
     defaultConfig {
         applicationId = "<%= package %>"
         minSdk = 26
