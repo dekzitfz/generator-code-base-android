@@ -702,6 +702,12 @@ module.exports = class extends Generator {
         //gradle
         mkdirp(rootDir + '/gradle');
 
+        //gradle/libs.versions.toml
+        this.fs.copy(
+          this.templatePath('gradle/libs.versions.toml'),
+          this.destinationPath(rootDir + '/gradle/libs.versions.toml')
+        );
+
         //gradle/wrapper
         mkdirp(rootDir + '/gradle/wrapper');
 
