@@ -78,67 +78,68 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.core:core-ktx:1.10.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("com.google.android.material:material:1.9.0")
-    implementation("com.intuit.sdp:sdp-android:1.0.4")
-    implementation("androidx.recyclerview:recyclerview:1.3.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.constraintLayout)
+    implementation(libs.google.material)
+    implementation(libs.sdp.android)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.androidx.cardview)
+    implementation(libs.androidx.swipeRefreshLayout)
 
     //room
-    implementation("androidx.room:room-runtime:2.4.3")
-    kapt("androidx.room:room-compiler:2.4.3")
-    implementation("androidx.room:room-ktx:2.4.3")
-    implementation("androidx.room:room-rxjava2:2.4.3")
-    testImplementation("androidx.room:room-testing:2.4.3")
-    androidTestImplementation("androidx.room:room-testing:2.4.3")
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.room.rxjava2)
+    testImplementation(libs.androidx.room.testing)
+    androidTestImplementation(libs.androidx.room.testing)
 
     //Test
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test:runner:1.5.2")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.5")
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.test.runner)
+    androidTestImplementation(libs.androidx.espresso)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.junit.ktx)
 
     //Others
-    debugImplementation("com.github.amitshekhariitbhu.Android-Debug-Database:debug-db:v1.0.6")
-    implementation("pub.devrel:easypermissions:3.0.0")
+    debugImplementation(libs.android.debug.db)
+    implementation(libs.easypermissions)
 
     //ViewModel,LiveData,Saved state module for ViewModel,Annotation processor
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.1")
-    implementation("androidx.lifecycle:lifecycle-common-java8:2.6.1")
+    implementation(libs.androidx.lifecycle.viewmodel)
+    implementation(libs.androidx.lifecycle.livedata)
+    implementation(libs.androidx.lifecycle.viewmodel.savedstate)
+    implementation(libs.androidx.lifecycle.common.java8)
 
     //paging library
-    implementation("androidx.paging:paging-runtime-ktx:3.1.1")
+    implementation(libs.androidx.paging)
 
     //timber log
-    implementation("com.jakewharton.timber:timber:5.0.1")
+    implementation(libs.timber)
 
     //Glide
-    implementation("com.github.bumptech.glide:glide:4.11.0")
-    implementation("com.github.bumptech.glide:okhttp3-integration:4.11.0")
-    kapt("com.github.bumptech.glide:compiler:4.11.0")
+    implementation(libs.glide)
+    implementation(libs.glide.okhttp)
+    kapt(libs.glide.compiler)
 
     //RxJava
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
-    implementation("io.reactivex.rxjava2:rxjava:2.2.9")
+    implementation(libs.rx.android)
+    implementation(libs.rx.java)
 
     //retrofit & okhttp
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.0")
-    implementation("com.squareup.okio:okio:2.8.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation(libs.retrofit.converter)
+    implementation(libs.retrofit.adapter)
+    implementation(libs.okhttp)
+    implementation(libs.okio)
+    implementation(libs.okhttp.logging.interceptor)
 
     //dagger
-    implementation("com.google.dagger:dagger:2.37")
-    kapt("com.google.dagger:dagger-compiler:2.37")
-    kapt("org.glassfish:javax.annotation:10.0-b28")
-    implementation("com.google.dagger:dagger-android:2.37")
-    implementation("com.google.dagger:dagger-android-support:2.37")
-    kapt("com.google.dagger:dagger-android-processor:2.37")
+    implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+    kapt(libs.javax.annotation)
+    implementation(libs.dagger.android)
+    implementation(libs.dagger.android.support)
+    kapt(libs.dagger.android.processor)
 }
