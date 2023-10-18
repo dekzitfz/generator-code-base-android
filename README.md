@@ -3,6 +3,12 @@
 A Boilerplate code generator for creating Android project. Using fully Kotlin and MVVM pattern that refer to Android Jetpack. Because Im tired to setup Dagger and other stuffs everytime initializing a new project. This boilerplate using [PokéAPI](https://pokeapi.co/) for sample list.
 
 [![npm version](https://badge.fury.io/js/generator-android-kotlin-mvvm.svg)](https://badge.fury.io/js/generator-android-kotlin-mvvm)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.minAndroidSDK&label=minimum%20SDK)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.targetAndroidSDK&label=target%20SDK)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.kotlin&label=Kotlin%20Version)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.agp&label=Android%20Gradle%20Plugin)
+![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.yeoman&label=Yeoman%20Version)
+
 
 
 ## What's Included:
