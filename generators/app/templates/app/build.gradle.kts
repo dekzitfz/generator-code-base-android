@@ -4,6 +4,7 @@ plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("kapt")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -26,6 +27,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     sourceSets {
@@ -122,7 +124,7 @@ dependencies {
     //Glide
     implementation(libs.glide)
     implementation(libs.glide.okhttp)
-    kapt(libs.glide.compiler)
+    ksp(libs.glide.compiler)
 
     //RxJava
     implementation(libs.rx.android)
