@@ -52,7 +52,7 @@ class ListPokemonActivity : BaseActivity<ListPokemonViewModel>(){
 
         lifecycleScope.launch {
             lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.dataFlow.collectLatest { pagingData ->
+                viewModel.localDataFlow.collectLatest { pagingData ->
                     adapter?.submitData(pagingData)
                 }
             }

@@ -1,7 +1,7 @@
 {
     "minAndroidSDK": "26",
-    "targetAndroidSDK": "34",
+    "targetAndroidSDK": "35",
     "kotlin": "1.9.22",
-    "agp": "8.2.1",
-    "yeoman": "5.6.1"
+    "agp": "8.6.0",
+    "yeoman": "5.10.0"
 }

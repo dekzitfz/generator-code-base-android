@@ -76,10 +76,10 @@ module.exports = class extends Generator {
         );
 
         //.gitignore
-        // this.fs.copy(
-        //   this.templatePath('.gitignore'),
-        //   this.destinationPath(rootDir + '/.gitignore')
-        // );
+        this.fs.copy(
+          this.templatePath('.gitignorefile'),
+          this.destinationPath(rootDir + '/.gitignore')
+        );
 
         // /app
         mkdirp(rootDir + '/app'); //root/app
@@ -131,12 +131,21 @@ module.exports = class extends Generator {
         /*----------start generate files in root/app/src ----------*/
         //app/src/androidTest/java/YOUR_PACKAGE_NAME
         mkdirp(rootDir + '/app/src/androidTest/java/' + packageDir);
-      
-        //app/src/test/java/YOUR_PACKAGE_NAME
-        mkdirp(rootDir + '/app/src/test/java/' + packageDir);
 
         //app/src/main/
         mkdirp(rootDir + '/app/src/main');
+
+
+        /*----------start generate files in root/app/src/test ----------*/
+        //app/src/test/java/YOUR_PACKAGE_NAME
+        mkdirp(rootDir + '/app/src/test/java/' + packageDir);
+
+        //app/src/test/java/YOUR_PACKAGE_NAME/PokemonModelTest.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/test/java/com/example/app/PokemonModelTest.kt'),
+          this.destinationPath(rootDir + '/app/src/test/java/' + packageDir + '/PokemonModelTest.kt'),
+          {package: this.answers.package}
+        );
 
 
         /*----------start generate files in root/app/src/androidTest ----------*/
@@ -154,6 +163,13 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/androidTest/java/com/example/app/room/MigrationUtil.kt'),
           this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/MigrationUtil.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/androidTest/java/YOUR_PACKAGE_NAME/room/RoomMigrationTest.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/androidTest/java/com/example/app/room/RoomMigrationTest.kt'),
+          this.destinationPath(rootDir + '/app/src/androidTest/java/' + packageDir + '/room/RoomMigrationTest.kt'),
           {package: this.answers.package}
         );
 
@@ -432,6 +448,13 @@ module.exports = class extends Generator {
           {package: this.answers.package}
         );
 
+        //app/src/main/java/YOUR_PACKAGE_PATH/feature/listpokemon/ListPokemonRemoteMediator.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/feature/listpokemon/ListPokemonRemoteMediator.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/feature/listpokemon/ListPokemonRemoteMediator.kt'),
+          {package: this.answers.package}
+        );
+
 
         /*----------start generate files in root/app/src/main/YOUR_PACKAGE_PATH/model ----------*/
         //app/src/main/java/YOUR_PACKAGE_PATH/model/api
@@ -485,6 +508,13 @@ module.exports = class extends Generator {
         this.fs.copyTpl(
           this.templatePath('app/src/main/java/com/example/app/util/NetworkState.kt'),
           this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/util/NetworkState.kt'),
+          {package: this.answers.package}
+        );
+
+        //app/src/main/java/YOUR_PACKAGE_PATH/util/CommonUtil.kt
+        this.fs.copyTpl(
+          this.templatePath('app/src/main/java/com/example/app/util/CommonUtil.kt'),
+          this.destinationPath(rootDir + '/app/src/main/java/' + packageDir + '/util/CommonUtil.kt'),
           {package: this.answers.package}
         );
 

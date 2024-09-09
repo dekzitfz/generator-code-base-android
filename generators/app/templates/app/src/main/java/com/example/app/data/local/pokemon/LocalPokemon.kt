@@ -2,13 +2,18 @@ package <%= package %>.data.local.pokemon
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 
-@Entity(tableName = "pokemon", primaryKeys = ["pokemon_id", "pokemon_name"])
+/**
+ * room migration requirements:
+ * - enable export schema (already enabled by default)
+ *
+ * room migration step 1: create new column, for example in this class is 'pokemon_type'
+ */
+@Entity(tableName = "pokemon")
 data class LocalPokemon(
-    @ColumnInfo(name = "pokemon_id") val id: Int,
+    @PrimaryKey val id: Int,
     @ColumnInfo(name = "pokemon_name") val pokemonName: String = "",
-    @ColumnInfo(name = "pokemon_image_url") val pokemonImageUrl: String = ""
-
-    //TODO enable this to test migration from v1 to v2
-    //,@ColumnInfo(name = "pokemon_type") val pokemonType: String? = null
+    @ColumnInfo(name = "pokemon_image_url") val pokemonImageUrl: String = "",
+//    @ColumnInfo(name = "pokemon_type") val pokemonType: String? = null
 )

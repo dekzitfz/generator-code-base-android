@@ -8,5 +8,8 @@ data class PokemonResponse(
 	val count: Int? = null,
 
 	@SerializedName("results")
-	val results: List<Pokemon> = mutableListOf()
+	val results: List<Pokemon> = mutableListOf(),
+
+	@SerializedName("next")
+	val next: String? = null
 )

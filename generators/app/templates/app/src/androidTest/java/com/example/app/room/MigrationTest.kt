@@ -15,19 +15,23 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
 
+/**
+ * old room migration test
+ * will be used for future reference only
+ */
 
-@RunWith(AndroidJUnit4::class)
+//@RunWith(AndroidJUnit4::class)
 class MigrationTest {
 
     private val TEST_DB = "migration-test"
 
-    @get:Rule val helper = MigrationTestHelper(
+    /*@get:Rule val helper = MigrationTestHelper(
         InstrumentationRegistry.getInstrumentation(),
         AppDatabase::class.java.canonicalName!!,
         FrameworkSQLiteOpenHelperFactory()
-    )
+    )*/
 
-    @Test
+    /*@Test
     @Throws(IOException::class)
     fun onMigrationFrom1To2_CheckIf_TableContainsExistingData() {
         val db = helper.createDatabase(TEST_DB, 1)
@@ -48,13 +52,13 @@ class MigrationTest {
             ) as AppDatabase
 
         //Now checking if the new database contains the correctly exported data from the previous database
-        val migratedDataFeedDao = appDatabase.PokemonDao()
+        val migratedDataFeedDao = appDatabase.pokemonDao()
         Assert.assertEquals(
             migratedDataFeedDao.loadPokemonById("pokemon 2").pokemonName,
             fakeData[2].pokemonName
         )
         appDatabase.close()
-    }
+    }*/
 
 
     private fun insertData(pokemon: LocalPokemon, db: SupportSQLiteDatabase) {
