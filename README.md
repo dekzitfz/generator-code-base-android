@@ -58,7 +58,7 @@ Run Generator using Yeoman
 yo android-kotlin-mvvm
 ```
 
-Open project using Android Studio, sync/rebuild your project, and done!
+Once boilerplate generated sucessfully, open it using Android Studio, sync/rebuild your project, and done! Check [Wiki](https://github.com/dekzitfz/generator-code-base-android/wiki) for more information how to use this boilerplate.
 
 ## Notes
 
