@@ -27,15 +27,6 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [Kotlin DSL](https://android-developers.googleblog.com/2023/04/kotlin-dsl-is-now-default-for-new-gradle-builds.html)
 
 
-## TODO List:
-
-- [x] Offline First (using Room and paging lib)
-- [x] Add Example Usage of Fragment
-- [ ] Create Documentation Code Snippet
-- [x] Add example for using Coroutines
-- [x] Create Simple Unit Test
-
-
 ## How To Use
 
 Install yeoman using NPM
