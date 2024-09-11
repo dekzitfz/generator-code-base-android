@@ -728,6 +728,16 @@ module.exports = class extends Generator {
         );
 
 
+        /*----------start generate files in root/app/src/main/res/xml ----------*/
+        //app/src/main/res/xml
+        mkdirp(rootDir + '/app/src/main/res/xml');
+
+        //app/src/main/res/xml/data_extraction_rules.xml
+        this.fs.copy(
+          this.templatePath('app/src/main/res/xml/data_extraction_rules.xml'),
+          this.destinationPath(rootDir + '/app/src/main/res/xml/data_extraction_rules.xml')
+        );
+
         /*----------start generate files in root/gradle ----------*/
         //gradle
         mkdirp(rootDir + '/gradle');
