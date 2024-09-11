@@ -1,6 +1,6 @@
 # Code Base Generator for Android Project
 
-A Boilerplate code generator for creating Android project. Using fully Kotlin and MVVM pattern that refer to Android Jetpack. Because Im tired to setup Dagger and other stuffs everytime initializing a new project. This boilerplate using [PokéAPI](https://pokeapi.co/) for sample list.
+A Boilerplate code generator for creating Android project. Using Kotlin and MVVM pattern that refer to Android Jetpack. This boilerplate using [PokéAPI](https://pokeapi.co/) for sample data source list.
 
 [![npm version](https://badge.fury.io/js/generator-android-kotlin-mvvm.svg)](https://badge.fury.io/js/generator-android-kotlin-mvvm)
 ![Dynamic JSON Badge](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fdekzitfz%2Fgenerator-code-base-android%2Fmaster%2Finfo.json&query=%24.minAndroidSDK&label=minimum%20SDK)
@@ -19,19 +19,12 @@ A Boilerplate code generator for creating Android project. Using fully Kotlin an
 - [Dagger 2](https://github.com/google/dagger)
 - [Retrofit 2](https://github.com/square/retrofit)
 - [Paging Library](https://developer.android.com/topic/libraries/architecture/paging)
+- [Room](https://developer.android.com/training/data-storage/room)
 - [ReactiveX](https://github.com/ReactiveX/RxAndroid)
 - [Timber](https://github.com/JakeWharton/timber)
 - [Glide](https://github.com/bumptech/glide)
+- [Coroutines](https://developer.android.com/kotlin/coroutines)
 - [Kotlin DSL](https://android-developers.googleblog.com/2023/04/kotlin-dsl-is-now-default-for-new-gradle-builds.html)
-
-
-## TODO List:
-
-- [ ] Offline First (using Room and paging lib)
-- [x] Add Example Usage of Fragment
-- [ ] Create Documentation Code Snippet
-- [x] Add example for using Coroutines
-- [ ] Create Unit Test
 
 
 ## How To Use
@@ -55,40 +48,27 @@ Install generator using NPM
 npm install -g generator-android-kotlin-mvvm
 ```
 
+New Node and npm users might run into permissions issues. These issues show up in the form of `EACCESS` errors during installation. Refer to the [npm guide to fix permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions) if this happens to you.
+
+On Windows, we suggest using a better command line tool such as [cmder](https://cmder.app/) or PowerShell to improve the experience.
+
 Run Generator using Yeoman
 
 ```bash
 yo android-kotlin-mvvm
 ```
 
-Open project using Android Studio, build, and done!
+Once boilerplate generated sucessfully, open it using Android Studio, sync/rebuild your project, and done! Check [Wiki](https://github.com/dekzitfz/generator-code-base-android/wiki) for more information how to use this boilerplate.
 
 ## Notes
 
 Make sure you are using java version 17 before try to sync/build the source. Configure it at android studio -> file -> project structure -> SDK location -> gradle settings -> gradle JDK
 
-## Testing Local Database Migration
+## Troubleshooting
+Most issues can be found by running:
 
-notes: right now, room is configured but not used for default.
+```bash
+yo doctor
+```
 
-This boilerplate using Room to store Local Database, to handle each migration you can refer to existing sample. In this sample we add new column in existing table.
-
-- After first project build, make sure database schemas generated for 1st version, it should be located in ```YOUR_PROJECT_DIR\app\schemas\YOUR_PACKAGE_PATH.data.AppDatabase\1.json```, if its not exist, try to rebuild the project.
-
-- do changes on this 3 files:
-
-1. ```AppDatabase.kt```
-
-change version number from 1 to 2. (Migration query has been included, ```MIGRATION_1_2```)
-
-2. ```LocalPokemon.kt```
-
-since we adding column, we need update the entity with the new column.
-
-3. ```AppModule.kt```
-
-- add migration query to the database builder, for details you can also check the TODOs.
-
-- then rebuild the project, new schema version should be generated, ```2.json```
-
-- go to ```MigrationTest.kt``` and run test using device or emulator.
+The `doctor` command will diagnose and provide steps to resolve the most common issues.

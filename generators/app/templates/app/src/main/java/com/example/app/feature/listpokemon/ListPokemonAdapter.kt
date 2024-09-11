@@ -9,15 +9,15 @@ import com.bumptech.glide.Glide
 import <%= package %>.R
 import <%= package %>.databinding.ItemPokemonBinding
 import <%= package %>.feature.detailpokemon.DetailPokemonActivity
-import <%= package %>.model.api.pokemon.Pokemon
+import <%= package %>.data.local.pokemon.LocalPokemon
 import androidx.paging.PagingDataAdapter
 
 class ListPokemonAdapter:
-    PagingDataAdapter<Pokemon, ListPokemonAdapter.PokemonVH>(DataComparator) {
+    PagingDataAdapter<LocalPokemon, ListPokemonAdapter.PokemonVH>(DataComparator) {
 
-    object DataComparator : DiffUtil.ItemCallback<Pokemon>() {
-        override fun areItemsTheSame(oldItem: Pokemon, newItem: Pokemon) = oldItem.name == newItem.name
-        override fun areContentsTheSame(oldItem: Pokemon, newItem: Pokemon) = oldItem == newItem
+    object DataComparator : DiffUtil.ItemCallback<LocalPokemon>() {
+        override fun areItemsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon) = oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: LocalPokemon, newItem: LocalPokemon) = oldItem == newItem
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonVH =
@@ -28,16 +28,16 @@ class ListPokemonAdapter:
     override fun onBindViewHolder(holder: PokemonVH, position: Int) {
         with(holder){
             val pokemon = getItem(position)
-            Glide.with(this.itemView.context)
-                .load(pokemon?.getImage())
+            Glide.with(itemView.context)
+                .load(pokemon?.pokemonImageUrl)
                 .placeholder(R.mipmap.ic_launcher_round)
                 .into(binding.image)
-            binding.name.text = pokemon?.name
+            binding.name.text = pokemon?.pokemonName
 
             binding.root.setOnClickListener {
-                holder.itemView.context.startActivity(
-                    Intent(holder.itemView.context, DetailPokemonActivity::class.java)
-                        .putExtra(DetailPokemonActivity.POKEMON_NAME, pokemon?.name)
+                itemView.context.startActivity(
+                    Intent(itemView.context, DetailPokemonActivity::class.java)
+                        .putExtra(DetailPokemonActivity.POKEMON_NAME, pokemon?.pokemonName)
                 )
             }
         }

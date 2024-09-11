@@ -1,5 +1,3 @@
-@file:Suppress("UnstableApiUsage")
-
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -9,19 +7,20 @@ plugins {
 
 android {
     namespace = "<%= package %>"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "<%= package %>"
         minSdk = 26
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments["room.schemaLocation"] = "$projectDir/schemas"
-            }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+        sourceSets {
+            getByName("androidTest").assets.srcDir("$projectDir/schemas")
         }
     }
 
@@ -91,12 +90,12 @@ dependencies {
 
     //room
     implementation(libs.androidx.room.runtime)
-    annotationProcessor(libs.androidx.room.compiler)
-    kapt(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.rxjava2)
     testImplementation(libs.androidx.room.testing)
     androidTestImplementation(libs.androidx.room.testing)
+    implementation(libs.androidx.room.paging)
 
     //Test
     testImplementation(libs.junit)
@@ -106,7 +105,6 @@ dependencies {
     androidTestImplementation(libs.androidx.junit.ktx)
 
     //Others
-    debugImplementation(libs.android.debug.db)
     implementation(libs.easypermissions)
 
     //ViewModel,LiveData,Saved state module for ViewModel,Annotation processor

@@ -18,6 +18,6 @@ interface APIService {
     @GET("pokemon")
     suspend fun requestListPokemon(
         @Query("limit") limit: Int,
-        @Query("offset") page: Int
+        @Query("offset") offset: Int
     ): Response<PokemonResponse>
 }
